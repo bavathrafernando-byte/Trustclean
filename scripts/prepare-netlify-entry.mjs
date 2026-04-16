@@ -74,6 +74,15 @@ if (fileExists(redirectsSrc)) {
   console.warn(`[prepare-netlify-entry] Missing public/_redirects; skipping copy`);
 }
 
+// Keep a deterministic static HTML entry for Netlify.
+const indexSrc = path.join(publicDir, "index.html");
+const indexDest = path.join(distClientDir, "index.html");
+if (fileExists(indexSrc)) {
+  fs.copyFileSync(indexSrc, indexDest);
+} else {
+  console.warn(`[prepare-netlify-entry] Missing public/index.html; skipping copy`);
+}
+
 console.log(
   `[prepare-netlify-entry] Created ${path.posix.join(
     "dist/client/assets",

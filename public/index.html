@@ -7,6 +7,20 @@
     <title>TrustClean Lanka</title>
   </head>
   <body>
+    <script>
+      // Netlify static hosting does not inject TanStack Start SSR payload.
+      // Seed a minimal payload so the client can boot without SSR hydration data.
+      window.$_TSR = window.$_TSR || {
+        initialized: false,
+        buffer: [],
+        router: {
+          matches: [],
+          manifest: {},
+          dehydratedData: null,
+          lastMatchId: null,
+        },
+      };
+    </script>
     <!-- TanStack Start browser bootstrap hydrates into `document` -->
     <script type="module" src="./assets/entry.js"></script>
   </body>
