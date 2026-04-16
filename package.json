@@ -8,6 +8,7 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
+    "postbuild": "node scripts/prepare-netlify-entry.mjs",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
